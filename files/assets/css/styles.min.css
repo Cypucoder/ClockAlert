@@ -1,0 +1,15 @@
+.mar{margin:15px 0}
+
+.upl {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+}
+
+.uplWrp {
+    overflow: hidden;
+    position: relative;
+}

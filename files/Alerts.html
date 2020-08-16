@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>ClockAlert</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/styles.min.css">
+</head>
+
+<body ng-app="myApp" ng-controller="data_Alert">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <h1>Choose your alert</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6 col-md-3 mar"><button class="btn btn-primary btn-block" type="button" style="background-color: rgb(255,92,0); height:400px;font-size: 60px; width: 90%" ng-click="change('F')">Fire</button></div>
+            <div class="col-sm-6 col-md-3 mar"><button class="btn btn-primary btn-block" type="button" style="background-color: rgb(140,140,140); height:400px;font-size: 60px; width: 90%" ng-click="change('W')">Weather emergency</button></div>
+            <div class="col-sm-6 col-md-3 mar"><button class="btn btn-primary btn-block" type="button" style="height:400px;font-size: 60px; width: 90%" ng-click="change('1')">Clear</button></div>
+            <div class="col-sm-6 col-md-3 mar"><button class="btn btn-primary btn-block" type="button" style="height:400px;font-size: 60px; width: 90%" ng-click="change('C')">Closing</button></div>
+            <div class="col-sm-6 col-md-3 mar"><button class="btn btn-primary btn-block" type="button" style="height:400px;font-size: 60px; width: 90%" ng-click="reload()">Refresh clocks</button></div>
+        </div>
+    </div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/script.min.js"></script>
+    <script src="assets/js/socket.io.js"></script>
+    <script src="assets/js/angular.min.js"></script>
+    <script src="assets/js/code.js"></script>
+</body>
+
+</html>

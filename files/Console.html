@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>ClockAlert</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/styles.min.css">
+</head>
+
+<body ng-app="myApp" ng-controller="data_Console">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <h1>Clock console</h1>
+                <hr />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 col-lg-3 col-xl-2">
+                <div class="row">
+                    <div class="col">
+                        <h1>Central</h1>
+                    </div>
+                    <div class="col">
+                        <button class="btn btn-primary btn-block" type="button" ng-if="saCentral == true">Save</button>
+                    </div>
+                </div>
+                <div ng-repeat="x in centList">
+                    <div class="row" style="margin-top: 5px;margin-bottom: 5px;background-color: #b0b0b0;" ng-if="x.show == 'false'">
+                        <div class="col-lg-6 text-center align-self-center"><img class="img-fluid" src="{{x.image}}" style="filter: saturate(0%);" /></div>
+                        <div class="col-lg-6">
+                            <button class="btn btn-primary btn-block" type="button" ng-click="x.show = sHide('true', 'Central', x.id)">Show</button>
+                            <div class="uplWrp" style="margin: 10px 0px">
+                                <button class="btn btn-primary btn-block" type="button">Change image</button>
+                                <input name="image_{{x.id}}" id="image_{{x.id}}" onchange="angular.element(this).scope().imageChoose(this, 'Central')"  accept="image/*" class="upl" type="file">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 5px;margin-bottom: 5px;" ng-if="x.show == 'true'">
+                        <div class="col-lg-6 text-center align-self-center"><img class="img-fluid" src="{{x.image}}"/></div>
+                        
+                        <!--<div class="form-group uplWrp">
+                            <button class="btn btn-primary btn-block" type="button" style="background-color: #2D3C4D;">Your avatar</button>
+                            <input class="upl" type="file" accept="image/*" (change)="onSelectFile($event)"/>
+                        </div>-->
+                        
+                        <div class="col-lg-6">
+                            <button class="btn btn-primary btn-block" type="button" ng-click="x.show = sHide('false', 'Central', x.id)">Hide</button>
+                            <div class="uplWrp" style="margin: 10px 0px">
+                                <button class="btn btn-primary btn-block" type="button">Change image</button>
+                                <input name="image_{{x.id}}" id="image_{{x.id}}" onchange="angular.element(this).scope().imageChoose(this, 'Central')"  accept="image/*" class="upl" type="file">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-lg-3 col-xl-2">
+                <div class="row">
+                    <div class="col">
+                        <h1>WR</h1>
+                    </div>
+                    <div class="col">
+                        <button class="btn btn-primary btn-block" type="button" ng-if="saWR == true">Save</button>
+                    </div>
+                </div>
+                <div ng-repeat="x in wrList">
+                    <div class="row" style="margin-top: 5px;margin-bottom: 5px;background-color: #b0b0b0;" ng-if="x.show == 'false'">
+                        <div class="col-lg-6 text-center align-self-center"><img class="img-fluid" src="{{x.image}}" style="filter: saturate(0%);" /></div>
+                        <div class="col-lg-6">
+                            <button class="btn btn-primary btn-block" type="button" ng-click="x.show = sHide('true', 'WR', x.id)">Show</button>
+                            <div class="uplWrp" style="margin: 10px 0px">
+                                <button class="btn btn-primary btn-block" type="button">Change image</button>
+                                <input name="WR_{{x.id}}" id="WR_{{x.id}}" onchange="angular.element(this).scope().imageChoose(this, 'WR')"  accept="image/*" class="upl" type="file">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 5px;margin-bottom: 5px;" ng-if="x.show == 'true'">
+                        <div class="col-lg-6 text-center align-self-center"><img class="img-fluid" src="{{x.image}}" /></div>
+                        <div class="col-lg-6">
+                            <button class="btn btn-primary btn-block" type="button" ng-click="x.show = sHide('false', 'WR', x.id)">Hide</button>
+                            <div class="uplWrp" style="margin: 10px 0px">
+                                <button class="btn btn-primary btn-block" type="button">Change image</button>
+                                <input name="WR_{{x.id}}" id="WR_{{x.id}}" onchange="angular.element(this).scope().imageChoose(this, 'WR')"  accept="image/*" class="upl" type="file">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-lg-3 col-xl-2">
+                <div class="row">
+                    <div class="col">
+                        <h1>Keystone</h1>
+                    </div>
+                    <div class="col">
+                        <button class="btn btn-primary btn-block" type="button" ng-if="saKeystone == true">Save</button>
+                    </div>
+                </div>
+                <div ng-repeat="x in keyList">
+                    <div class="row" style="margin-top: 5px;margin-bottom: 5px;background-color: #b0b0b0;" ng-if="x.show == 'false'">
+                        <div class="col-lg-6 text-center align-self-center"><img class="img-fluid" src="{{x.image}}" style="filter: saturate(0%);" /></div>
+                        <div class="col-lg-6">
+                            <button class="btn btn-primary btn-block" type="button" ng-click="x.show = sHide('true', 'Keystone', x.id)">Show</button>
+                            <div class="uplWrp" style="margin: 10px 0px">
+                                <button class="btn btn-primary btn-block" type="button">Change image</button>
+                                <input name="key_{{x.id}}" id="key_{{x.id}}" onchange="angular.element(this).scope().imageChoose(this, 'Keystone')"  accept="image/*" class="upl" type="file">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 5px;margin-bottom: 5px;" ng-if="x.show == 'true'">
+                        <div class="col-lg-6 text-center align-self-center"><img class="img-fluid" src="{{x.image}}" /></div>
+                        <div class="col-lg-6">
+                            <button class="btn btn-primary btn-block" type="button" ng-click="x.show = sHide('false', 'Keystone', x.id)">Hide</button>
+                            <div class="uplWrp" style="margin: 10px 0px">
+                                <button class="btn btn-primary btn-block" type="button">Change image</button>
+                                <input name="key_{{x.id}}" id="key_{{x.id}}" onchange="angular.element(this).scope().imageChoose(this, 'Keystone')"  accept="image/*" class="upl" type="file">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-lg-3 col-xl-2">
+                <div class="row">
+                    <div class="col">
+                        <h1>South</h1>
+                    </div>
+                    <div class="col">
+                        <button class="btn btn-primary btn-block" type="button" ng-if="saSouth == true">Save</button>
+                    </div>
+                </div>
+                <div ng-repeat="x in southList">
+                    <div class="row" style="margin-top: 5px;margin-bottom: 5px;background-color: #b0b0b0;" ng-if="x.show == 'false'">
+                        <div class="col-lg-6 text-center align-self-center"><img class="img-fluid" src="{{x.image}}" style="filter: saturate(0%);" /></div>
+                        <div class="col-lg-6">
+                            <button class="btn btn-primary btn-block" type="button" ng-click="x.show = sHide('true', 'South', x.id)">Show</button>
+                            <div class="uplWrp" style="margin: 10px 0px">
+                                <button class="btn btn-primary btn-block" type="button">Change image</button>
+                                <input name="south_{{x.id}}" id="south_{{x.id}}" onchange="angular.element(this).scope().imageChoose(this, 'South')"  accept="image/*" class="upl" type="file">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 5px;margin-bottom: 5px;" ng-if="x.show == 'true'">
+                        <div class="col-lg-6 text-center align-self-center"><img class="img-fluid" src="{{x.image}}" /></div>
+                        <div class="col-lg-6">
+                            <button class="btn btn-primary btn-block" type="button" ng-click="x.show = sHide('false', 'South', x.id)">Hide</button>
+                            <div class="uplWrp" style="margin: 10px 0px">
+                                <button class="btn btn-primary btn-block" type="button">Change image</button>
+                                <input name="south_{{x.id}}" id="south_{{x.id}}" onchange="angular.element(this).scope().imageChoose(this, 'South')"  accept="image/*" class="upl" type="file">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-lg-3 col-xl-2">
+                <div class="row">
+                    <div class="col">
+                        <h1>Taylor</h1>
+                    </div>
+                    <div class="col">
+                        <button class="btn btn-primary btn-block" type="button" ng-if="saTaylor == true">Save</button>
+                    </div>
+                </div>
+                <div ng-repeat="x in TayList">
+                    <div class="row" style="margin-top: 5px;margin-bottom: 5px;background-color: #b0b0b0;" ng-if="x.show == 'false'">
+                        <div class="col-lg-6 text-center align-self-center"><img class="img-fluid" src="{{x.image}}" style="filter: saturate(0%);" /></div>
+                        <div class="col-lg-6">
+                            <button class="btn btn-primary btn-block" type="button" ng-click="x.show = sHide('true', 'Taylor', x.id)">Show</button>
+                            <div class="uplWrp" style="margin: 10px 0px">
+                                <button class="btn btn-primary btn-block" type="button">Change image</button>
+                                <input name="Tay_{{x.id}}" id="Tay_{{x.id}}" onchange="angular.element(this).scope().imageChoose(this, 'Taylor')"  accept="image/*" class="upl" type="file">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 5px;margin-bottom: 5px;" ng-if="x.show == 'true'">
+                        <div class="col-lg-6 text-center align-self-center"><img class="img-fluid" src="{{x.image}}" /></div>
+                        <div class="col-lg-6">
+                            <button class="btn btn-primary btn-block" type="button" ng-click="x.show = sHide('false', 'Taylor', x.id)">Hide</button>
+                            <div class="uplWrp" style="margin: 10px 0px">
+                                <button class="btn btn-primary btn-block" type="button">Change image</button>
+                                <input name="Tay_{{x.id}}" id="Tay_{{x.id}}" onchange="angular.element(this).scope().imageChoose(this, 'Taylor')"  accept="image/*" class="upl" type="file">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <!--<script src="assets/js/script.min.js"></script>-->
+    <script src="assets/js/socket.io.js"></script>
+    <script src="assets/js/angular.min.js"></script>
+    <script src="assets/js/code.js"></script>
+</body>
+
+</html>
